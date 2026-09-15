@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "./Header";
 import Reveal from "./Reveal";
 import QuoteForm from "./QuoteForm";
@@ -20,50 +21,62 @@ const SERVICES = [
   {
     title: "AC Maintenance & Services",
     desc: "WeMaintain Technical Service is dedicated to keeping its customers cool and healthy year-round.",
+    image: "/images/service-ac-maint.jpg",
   },
   {
     title: "AC Duct Cleaning Services",
     desc: "Dubai's climate demands heavy use of air conditioning systems year-round.",
+    image: "/images/service-ac-duct.jpg",
   },
   {
     title: "Deep Cleaning Services",
     desc: "Revitalize your space with WeMaintain Technical Services. Our deep cleaning experts handle it all.",
+    image: "/images/service-deep-cleaning.jpg",
   },
   {
     title: "Electrical Maintenance & Services",
     desc: "We have a team of qualified electricians available to service all electrical and electromechanical needs.",
+    image: "/images/service-electrical.jpg",
   },
   {
     title: "Grouting Services",
     desc: "We Maintain is your trusted solution for all tile and grout needs in Dubai.",
+    image: "/images/service-grouting.jpg",
   },
   {
     title: "Painting Services",
     desc: "Enhance your home's aesthetic appeal by taking advantage of our specialized wall painting service.",
+    image: "/images/service-painting.jpg",
   },
   {
     title: "Plumbing Maintenance & Services",
     desc: "Our expert plumbers are on hand to assist with all your plumbing maintenance, repair, and installation needs.",
+    image: "/images/service-plumbing.jpg",
   },
   {
     title: "Solar Heater Services",
     desc: "Keep your solar water heater running efficiently with our expert maintenance services.",
+    image: "/images/service-solar-heater.jpg",
   },
   {
     title: "Water Heater Services",
     desc: "We specialize in top-notch water heater services for homes and businesses across Dubai.",
+    image: "/images/service-water-heater.jpg",
   },
   {
     title: "Water Tank Cleaning Service",
     desc: "You do not have to be a genius to understand the importance of clean, safe water for your family.",
+    image: "/images/service-water-tank.jpg",
   },
   {
     title: "Handyman Services",
     desc: "WeMaintain Technical Service provides the best handyman services in Dubai you can trust to get results.",
+    image: "/images/service-handyman.jpg",
   },
   {
     title: "Annual Maintenance Contract",
     desc: "We ensure that customer requirements are determined and met with the aim of enhancing customer satisfaction.",
+    image: "/images/service-amc.jpg",
   },
 ];
 
@@ -89,7 +102,44 @@ const COMMUNITIES = [
   },
 ];
 
-const TEAM_TONES = ["amber", "navy", "slate", "navy", "amber", "slate"] as const;
+const TEAM = [
+  {
+    name: "Mark Sanderson",
+    role: "Lead HVAC & Cooling Specialist",
+    image: "/images/team-1.jpg",
+    tone: "amber" as const,
+  },
+  {
+    name: "Omar Farooq",
+    role: "Head of Handyman & Fit-Out",
+    image: "/images/team-2.jpg",
+    tone: "navy" as const,
+  },
+  {
+    name: "David Klein",
+    role: "Senior Plumbing Specialist",
+    image: "/images/team-3.jpg",
+    tone: "slate" as const,
+  },
+  {
+    name: "Elena Rostova",
+    role: "Operations & Quality Lead",
+    image: "/images/team-4.jpg",
+    tone: "navy" as const,
+  },
+  {
+    name: "Robert Vance",
+    role: "Technical Services Director",
+    image: "/images/team-5.jpg",
+    tone: "amber" as const,
+  },
+  {
+    name: "Sarah Miller",
+    role: "Water Systems Specialist",
+    image: "/images/team-6.jpg",
+    tone: "slate" as const,
+  },
+];
 
 export default function Home() {
   return (
@@ -99,7 +149,18 @@ export default function Home() {
       <main>
         {/* HERO */}
         <section className="relative overflow-hidden bg-near-black">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2a2115] via-[#141414] to-[#0b0b0d] texture-dots" />
+          <div className="absolute inset-0">
+            <Image
+              src="/images/hero-dubai-villa.jpg"
+              alt="Luxury Dubai Villa"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center opacity-25"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1b150d]/90 via-[#0e0e10]/95 to-[#0b0b0d]" />
+            <div className="texture-dots absolute inset-0 opacity-30" />
+          </div>
           <div className="relative mx-auto max-w-7xl px-5 md:px-8 pt-16 pb-20 md:pt-24 md:pb-28 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
             <Reveal>
               <p className="inline-flex items-center gap-2 text-brand text-xs font-semibold tracking-[0.2em] uppercase bg-brand/10 rounded-full px-4 py-1.5 mb-6">
@@ -125,12 +186,20 @@ export default function Home() {
           </div>
 
           <Reveal>
-            <div className="relative mx-auto max-w-7xl px-5 md:px-8 pb-10 md:pb-14 grid sm:grid-cols-2">
+            <div className="relative mx-auto max-w-7xl px-5 md:px-8 pb-10 md:pb-14 grid sm:grid-cols-2 gap-4 sm:gap-0">
               <a
                 href="#services"
-                className="group flex items-center justify-between gap-4 bg-brand text-white px-7 py-6 sm:rounded-l-2xl"
+                className="group relative overflow-hidden flex items-center justify-between gap-4 bg-brand text-white px-7 py-6 sm:rounded-l-2xl"
               >
-                <span className="flex items-center gap-4">
+                <Image
+                  src="/images/hero-house.jpg"
+                  alt="Residential Maintenance"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover opacity-20 group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-brand via-brand/90 to-brand/80" />
+                <span className="relative flex items-center gap-4">
                   <IconBuildingHome className="w-7 h-7 shrink-0" />
                   <span className="font-heading text-lg font-semibold leading-snug">
                     Building Maintenance
@@ -138,13 +207,21 @@ export default function Home() {
                     Service (Residential)
                   </span>
                 </span>
-                <IconArrowRight className="w-5 h-5 shrink-0 transition-transform duration-500 group-hover:translate-x-1.5" />
+                <IconArrowRight className="relative w-5 h-5 shrink-0 transition-transform duration-500 group-hover:translate-x-1.5" />
               </a>
               <a
                 href="#services"
-                className="group flex items-center justify-between gap-4 bg-ink text-white px-7 py-6 sm:rounded-r-2xl"
+                className="group relative overflow-hidden flex items-center justify-between gap-4 bg-ink text-white px-7 py-6 sm:rounded-r-2xl"
               >
-                <span className="flex items-center gap-4">
+                <Image
+                  src="/images/work-construction.jpg"
+                  alt="Commercial Maintenance"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover opacity-25 group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/80" />
+                <span className="relative flex items-center gap-4">
                   <IconBuildingOffice className="w-7 h-7 shrink-0 text-brand" />
                   <span className="font-heading text-lg font-semibold leading-snug">
                     Building Maintenance
@@ -152,7 +229,7 @@ export default function Home() {
                     Service (Commercial)
                   </span>
                 </span>
-                <span className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:translate-x-1.5">
+                <span className="relative w-10 h-10 rounded-full border border-white/30 flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:translate-x-1.5">
                   <IconArrowRight className="w-4 h-4" />
                 </span>
               </a>
@@ -163,9 +240,21 @@ export default function Home() {
         {/* ABOUT */}
         <section id="about" className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28 grid lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
           <Reveal className="grid grid-cols-2 gap-4">
-            <PhotoTile icon={<IconTeam />} tone="slate" className="col-span-2 aspect-[4/3] rounded-2xl" />
-            <PhotoTile icon={<IconWrench />} tone="amber" className="aspect-square rounded-2xl" />
-            <div className="bg-ink rounded-2xl flex flex-col justify-center items-center text-center text-white p-4">
+            <PhotoTile
+              imageSrc="/images/hero-technical-service.jpg"
+              alt="WeMaintain Technical Team in Action"
+              icon={<IconTeam />}
+              tone="slate"
+              className="col-span-2 aspect-[4/3] rounded-2xl"
+            />
+            <PhotoTile
+              imageSrc="/images/work-construction.jpg"
+              alt="Professional Craftsmanship"
+              icon={<IconWrench />}
+              tone="amber"
+              className="aspect-square rounded-2xl"
+            />
+            <div className="bg-ink rounded-2xl flex flex-col justify-center items-center text-center text-white p-4 border border-white/5">
               <p className="font-heading text-3xl font-bold text-brand">200+</p>
               <p className="text-sm font-medium mt-1">Projects Completed</p>
             </div>
@@ -230,6 +319,8 @@ export default function Home() {
               <Reveal key={s.title} delay={(i % 3) * 100}>
                 <article className="group bg-[#141414] rounded-2xl p-1.5 ring-1 ring-white/5 hover:ring-brand/40 transition-all duration-500">
                   <PhotoTile
+                    imageSrc={s.image}
+                    alt={s.title}
                     icon={<IconTools />}
                     tone={i % 3 === 0 ? "amber" : i % 3 === 1 ? "navy" : "slate"}
                     className="aspect-[4/3] rounded-xl"
@@ -305,7 +396,13 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={150}>
-            <PhotoTile icon={<IconHouseCheck />} tone="navy" className="aspect-[4/5] rounded-[1.75rem]" />
+            <PhotoTile
+              imageSrc="/images/work-architect.jpg"
+              alt="Quality Technical Inspection Dubai"
+              icon={<IconHouseCheck />}
+              tone="navy"
+              className="aspect-[4/5] rounded-[1.75rem]"
+            />
           </Reveal>
         </section>
 
@@ -314,10 +411,21 @@ export default function Home() {
           <Reveal>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">Our Team</h2>
           </Reveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {TEAM_TONES.map((tone, i) => (
-              <Reveal key={i} delay={(i % 3) * 100}>
-                <PhotoTile icon={<IconTeam />} tone={tone} className="aspect-square rounded-2xl" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+            {TEAM.map((m, i) => (
+              <Reveal key={m.name} delay={(i % 3) * 100}>
+                <div className="group rounded-2xl bg-[#141414] p-2 ring-1 ring-white/10 hover:ring-brand/40 transition-all duration-500">
+                  <PhotoTile
+                    imageSrc={m.image}
+                    alt={m.name}
+                    tone={m.tone}
+                    className="aspect-square rounded-xl"
+                  />
+                  <div className="p-3 text-center">
+                    <p className="font-heading text-white font-semibold text-base">{m.name}</p>
+                    <p className="text-brand text-xs font-medium mt-0.5">{m.role}</p>
+                  </div>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -380,10 +488,23 @@ export default function Home() {
         {/* QUOTE / CONTACT */}
         <section id="contact" className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28 grid lg:grid-cols-2 gap-12 items-center">
           <Reveal className="hidden lg:flex justify-center">
-            <div className="relative w-full max-w-sm aspect-square">
-              <div className="absolute inset-8 rounded-full bg-brand/10" />
-              <div className="absolute inset-0 flex items-center justify-center text-brand">
-                <IconWrench className="w-32 h-32" />
+            <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden group shadow-2xl ring-1 ring-black/10">
+              <Image
+                src="/images/hero-technical-service.jpg"
+                alt="WeMaintain Support Dubai"
+                fill
+                sizes="500px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <span className="inline-flex items-center gap-2 bg-brand text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                  24/7 Rapid Response
+                </span>
+                <p className="font-heading font-bold text-xl leading-snug">
+                  On-Demand Technical Experts Ready Across All Dubai Communities
+                </p>
+                <p className="text-white/70 text-xs mt-1">Prompt dispatch within 60 minutes for emergencies</p>
               </div>
             </div>
           </Reveal>
