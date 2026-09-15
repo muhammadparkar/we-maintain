@@ -5,10 +5,13 @@ import PhotoTile from "./PhotoTile";
 import {
   IconArrowRight,
   IconBadge,
+  IconBolt,
   IconBuildingHome,
   IconBuildingOffice,
   IconHouseCheck,
+  IconPhone,
   IconQuote,
+  IconShieldCheck,
   IconTeam,
   IconThumb,
   IconTools,
@@ -91,6 +94,20 @@ const COMMUNITIES = [
 
 const TEAM_TONES = ["amber", "navy", "slate", "navy", "amber", "slate"] as const;
 
+const FOOTER_SERVICES = [
+  "AC Maintenance & Services",
+  "AC Duct Cleaning Services",
+  "Electrical Maintenance & Services",
+  "Plumbing Maintenance & Services",
+  "Painting Services",
+  "Handyman Services",
+  "Water Tank Cleaning Service",
+  "Solar Heater Services",
+  "Water Heater Services",
+  "Deep Cleaning Services",
+  "Grouting Services",
+];
+
 export default function Home() {
   return (
     <>
@@ -98,66 +115,124 @@ export default function Home() {
 
       <main>
         {/* HERO */}
-        <section className="relative overflow-hidden bg-near-black">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2a2115] via-[#141414] to-[#0b0b0d] texture-dots" />
-          <div className="relative mx-auto max-w-7xl px-5 md:px-8 pt-16 pb-20 md:pt-24 md:pb-28 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
-            <Reveal>
-              <p className="inline-flex items-center gap-2 text-brand text-xs font-semibold tracking-[0.2em] uppercase bg-brand/10 rounded-full px-4 py-1.5 mb-6">
-                Technical Services · Dubai UAE
-              </p>
-              <h1 className="font-heading text-white text-4xl sm:text-5xl lg:text-6xl font-semibold uppercase leading-[1.05] max-w-xl">
-                Your Best Professional Technical Services Company In Dubai
-              </h1>
-              <a
-                href="#contact"
-                className="group mt-8 inline-flex items-center gap-3 bg-brand text-white font-semibold text-sm rounded-full pl-6 pr-2 py-2 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] hover:pr-3"
-              >
-                Get free quote
-                <span className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
-                  <IconArrowRight className="w-4 h-4" />
+        <section className="relative min-h-[100dvh] flex flex-col justify-end overflow-hidden bg-[#07070a]">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#241c10] via-[#141414] to-[#0b0b0d]" />
+          <div className="absolute inset-0 texture-dots opacity-60" />
+          <div className="absolute -top-32 -left-20 w-[28rem] h-[28rem] rounded-full bg-brand/25 blur-[130px]" />
+          <div className="absolute bottom-0 right-0 w-[22rem] h-[22rem] rounded-full bg-[#3a2c14] blur-[120px]" />
+
+          <Reveal blur className="absolute top-28 left-5 md:top-32 md:left-12 max-w-[210px] z-10">
+            <p className="font-serif italic text-white/45 text-[15px] leading-snug">
+              Trusted by residents &amp; property managers across Dubai since 2019.
+            </p>
+          </Reveal>
+
+          <Reveal blur delay={100} className="hidden sm:block absolute top-28 right-5 md:top-32 md:right-12 max-w-[220px] text-right z-10">
+            <p className="font-heading text-white text-sm font-semibold uppercase tracking-wide mb-1">
+              What we do
+            </p>
+            <p className="text-white/45 text-[13px] leading-relaxed">
+              Full-service technical maintenance — AC, electrical, plumbing, painting and
+              more, all under one roof.
+            </p>
+          </Reveal>
+
+          <div className="relative z-10 px-6 md:px-14 pb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
+            <Reveal blur>
+              <h1 className="font-heading text-white text-[2.75rem] sm:text-7xl lg:text-[6rem] font-bold uppercase leading-[0.9]">
+                Your Best
+                <br />
+                <span className="font-serif italic normal-case font-medium text-brand">
+                  Technical Service
                 </span>
-              </a>
+              </h1>
             </Reveal>
 
-            <Reveal delay={150}>
-              <QuoteForm />
+            <Reveal blur delay={150} className="lg:pb-3 shrink-0">
+              <div className="flex flex-col items-start gap-5 max-w-[240px]">
+                <p className="text-white/55 text-sm leading-relaxed">
+                  Professional AC, electrical, plumbing &amp; building maintenance for
+                  homes and businesses across Dubai.
+                </p>
+                <a
+                  href="#contact"
+                  className="group inline-flex items-center gap-3 bg-brand text-white font-semibold text-sm rounded-full pl-6 pr-2 py-2 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+                >
+                  Get free quote
+                  <span className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
+                    <IconArrowRight className="w-4 h-4" />
+                  </span>
+                </a>
+              </div>
             </Reveal>
           </div>
 
-          <Reveal>
-            <div className="relative mx-auto max-w-7xl px-5 md:px-8 pb-10 md:pb-14 grid sm:grid-cols-2">
-              <a
-                href="#services"
-                className="group flex items-center justify-between gap-4 bg-brand text-white px-7 py-6 sm:rounded-l-2xl"
-              >
-                <span className="flex items-center gap-4">
-                  <IconBuildingHome className="w-7 h-7 shrink-0" />
-                  <span className="font-heading text-lg font-semibold leading-snug">
-                    Building Maintenance
-                    <br />
-                    Service (Residential)
-                  </span>
-                </span>
-                <IconArrowRight className="w-5 h-5 shrink-0 transition-transform duration-500 group-hover:translate-x-1.5" />
-              </a>
-              <a
-                href="#services"
-                className="group flex items-center justify-between gap-4 bg-ink text-white px-7 py-6 sm:rounded-r-2xl"
-              >
-                <span className="flex items-center gap-4">
-                  <IconBuildingOffice className="w-7 h-7 shrink-0 text-brand" />
-                  <span className="font-heading text-lg font-semibold leading-snug">
-                    Building Maintenance
-                    <br />
-                    Service (Commercial)
-                  </span>
-                </span>
-                <span className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:translate-x-1.5">
-                  <IconArrowRight className="w-4 h-4" />
-                </span>
-              </a>
-            </div>
+          {/* ponytail: static index dots, wire to a real carousel state if the hero ever rotates multiple images */}
+          <div className="relative z-10 flex items-center justify-center gap-2 pb-8">
+            {[0, 1, 2, 3].map((i) => (
+              <span
+                key={i}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  i === 0 ? "w-6 bg-brand" : "w-1.5 bg-white/25"
+                }`}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 md:px-8 py-10 md:py-14">
+          <Reveal className="flex flex-wrap gap-x-8 gap-y-3 justify-center pb-10 mb-10 border-b border-black/10">
+            {[
+              { icon: <IconShieldCheck />, label: "Licensed & insured" },
+              { icon: <IconBolt />, label: "Same-day dispatch" },
+              { icon: <IconTeam />, label: "15+ trained technicians" },
+              { icon: <IconPhone />, label: "+971 581020077" },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-2.5 text-ink-soft text-[13px]">
+                <span className="w-4 h-4 text-brand shrink-0">{item.icon}</span>
+                {item.label}
+              </div>
+            ))}
           </Reveal>
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            <a
+              href="#services"
+              className="group relative overflow-hidden flex items-center justify-between gap-4 bg-brand text-white rounded-2xl px-7 py-6 transition-transform duration-500 active:scale-[0.99]"
+            >
+              <span className="flex items-center gap-4">
+                <span className="w-11 h-11 shrink-0 rounded-full bg-white/15 flex items-center justify-center p-2.5">
+                  <IconBuildingHome />
+                </span>
+                <span className="font-heading text-lg font-semibold leading-snug">
+                  Building Maintenance
+                  <br />
+                  Service (Residential)
+                </span>
+              </span>
+              <span className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
+                <IconArrowRight className="w-4 h-4" />
+              </span>
+            </a>
+            <a
+              href="#services"
+              className="group relative overflow-hidden flex items-center justify-between gap-4 bg-ink text-white rounded-2xl px-7 py-6 transition-transform duration-500 active:scale-[0.99]"
+            >
+              <span className="flex items-center gap-4">
+                <span className="w-11 h-11 shrink-0 rounded-full bg-brand/20 text-brand flex items-center justify-center p-2.5">
+                  <IconBuildingOffice />
+                </span>
+                <span className="font-heading text-lg font-semibold leading-snug">
+                  Building Maintenance
+                  <br />
+                  Service (Commercial)
+                </span>
+              </span>
+              <span className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
+                <IconArrowRight className="w-4 h-4" />
+              </span>
+            </a>
+          </div>
         </section>
 
         {/* ABOUT */}
@@ -413,9 +488,9 @@ export default function Home() {
             <h4 className="font-heading text-white font-semibold text-base mb-1">Services</h4>
             <div className="w-8 h-0.5 bg-brand mb-4" />
             <ul className="space-y-2 text-sm">
-              {SERVICES.slice(0, 9).map((s) => (
-                <li key={s.title} className="flex items-center gap-2">
-                  <span className="text-brand">»</span> {s.title}
+              {FOOTER_SERVICES.map((s) => (
+                <li key={s} className="flex items-center gap-2">
+                  <span className="text-brand">»</span> {s}
                 </li>
               ))}
             </ul>

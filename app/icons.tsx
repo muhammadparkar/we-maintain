@@ -127,6 +127,23 @@ export function IconThumb({ className }: IconProps) {
   );
 }
 
+export function IconShieldCheck({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" className={className ?? base}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3.5 5 6v5.5c0 4.2 2.9 7.3 7 9 4.1-1.7 7-4.8 7-9V6l-7-2.5Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="m9 12 2 2 4-4.2" />
+    </svg>
+  );
+}
+
+export function IconBolt({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" className={className ?? base}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M13 3 5 13.5h5.5L11 21l8-11h-5.5L13 3Z" />
+    </svg>
+  );
+}
+
 export function IconWhatsapp({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className ?? base}>
